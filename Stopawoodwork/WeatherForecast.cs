@@ -1,6 +1,6 @@
 using System;
 
-namespace Stopa_woodwork
+namespace Stopawoodwork
 {
     public class WeatherForecast
     {

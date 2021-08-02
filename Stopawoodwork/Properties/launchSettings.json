@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Stopa_woodwork": {
+    "Stopawoodwork": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
