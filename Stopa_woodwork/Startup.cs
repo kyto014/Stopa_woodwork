@@ -9,11 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Stopawoodwork.Models;
 using VueCliMiddleware;
 
-namespace Stopawoodwork
+namespace Stopa_woodwork
 {
     public class Startup
     {
@@ -28,8 +26,6 @@ namespace Stopawoodwork
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<StopaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp";

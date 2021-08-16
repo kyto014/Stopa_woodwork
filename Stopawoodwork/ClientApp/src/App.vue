@@ -1,6 +1,14 @@
 <template>
-  <nav-menu></nav-menu>
-  <router-view />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <nav-menu></nav-menu>
+      </div>
+      <div class="col-md-9 col-md-offset-3">
+        <router-view />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -15,6 +23,8 @@ export default {
 </script>
 
 <style>
+@import './styles.css';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
