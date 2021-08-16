@@ -11,47 +11,48 @@ namespace Stopawoodwork.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    public class AlbumsController : ControllerBase
     {
         private readonly StopaContext _context;
 
-        public CategoriesController(StopaContext context)
+        public AlbumsController(StopaContext context)
         {
             _context = context;
         }
 
-        // GET: api/Categories
+        // GET: api/Albums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Albums.ToListAsync();
         }
 
-        // GET: api/Categories/5
+        // GET: api/Albums/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<Album>> GetAlbum(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var album = await _context.Albums.FindAsync(id);
+
+            if (album == null)
             {
                 return NotFound();
             }
 
-            return category;
+            return album;
         }
 
-        // PUT: api/Categories/5
+        // PUT: api/Albums/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutAlbum(int id, Album album)
         {
-            if (id != category.Id)
+            if (id != album.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(album).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +60,7 @@ namespace Stopawoodwork.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!AlbumExists(id))
                 {
                     return NotFound();
                 }
@@ -72,37 +73,37 @@ namespace Stopawoodwork.Controllers
             return NoContent();
         }
 
-        // POST: api/Categories
+        // POST: api/Albums
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
-            _context.Categories.Add(category);
+            _context.Albums.Add(album);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, category);
+            return CreatedAtAction("GetAlbum", new { id = album.Id }, album);
         }
 
-        // DELETE: api/Categories/5
+        // DELETE: api/Albums/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        public async Task<ActionResult<Album>> DeleteAlbum(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var album = await _context.Albums.FindAsync(id);
+            if (album == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.Albums.Remove(album);
             await _context.SaveChangesAsync();
 
-            return category;
+            return album;
         }
 
-        private bool CategoryExists(int id)
+        private bool AlbumExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Albums.Any(e => e.Id == id);
         }
     }
 }
